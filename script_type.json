@@ -1,0 +1,55 @@
+{
+    "scheduled": {
+        "name": "ScheduledScript",
+        "entry_points": [
+            "execute"
+        ]
+    },
+    "userevent": {
+        "name": "UserEventScript",
+        "entry_points": [
+            "beforeLoad",
+            "beforeSubmit",
+            "afterSubmit"
+        ]
+    },
+    "client": {
+        "name": "ClientScript",
+        "entry_points": [
+            "fieldChanged",
+            "lineInit",
+            "pageInit",
+            "postSourcing",
+            "saveRecord",
+            "sublistChanged",
+            "validateDelete",
+            "validateField",
+            "validateInsert",
+            "validateLine"
+        ]
+    },
+    "mapreduce": {
+        "name": "MapreduceScript",
+        "entry_points": [
+            "getInputData",
+            "map",
+            "reduce",
+            "summarize"
+        ]
+    },
+    "restlet": {
+        "name": "Restlet",
+        "entry_points": [
+            "get",
+            "post",
+            "put",
+            "delete"
+        ]
+    },
+    "suitelet": {
+        "name": "Suitelet",
+        "entry_points": [
+            "onRequest"
+        ]
+    }
+}
