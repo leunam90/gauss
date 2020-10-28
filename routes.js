@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    sdfcli: path.join(path.dirname(require.main.filename), 'sdfcli', '20.1'),
+    sdfcli: path.join(path.dirname(require.main.filename), 'sdfcli', '20.1', (process.platform === 'win32') ? 'win32' : 'unix'),
     scripts: path.join(path.dirname(require.main.filename), 'script_type.json'),
     template: path.join(path.dirname(require.main.filename), 'template'),
     objects: path.join(path.dirname(require.main.filename), 'objects'),
