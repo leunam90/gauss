@@ -60,9 +60,7 @@ ${['SERVERSIDESCRIPTING', 'CUSTOMRECORDS', 'CRM'].map(el => `\t\t<feature requir
                                     return true;
                                 }
                             }).then((answers) => {
-                                execp(`git remote add origin ${answers.remote_url}`, (stdout, stderr, error) => {
-                                    console.log(stdout)
-                                });
+                                execp(`git remote add origin ${answers.remote_url}`, (stdout, stderr, error) => {console.log('Se ha agregado el remoto!')});
                             });
                         }).finally(() => {
                             //creates the package.json in main directory project

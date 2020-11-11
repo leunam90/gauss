@@ -5,7 +5,7 @@
     <name>{name}</name>
     <notifyowner>T</notifyowner>
     <!-- Ruta al archivo JS para crear el script en NetSuite [/SuiteScripts/path/to/file.js]   -->
-    <scriptfile>[path}]</scriptfile>
+    <scriptfile>[{path}]</scriptfile>
     <scriptdeployments>
         {scriptdeployment}
     </scriptdeployments>

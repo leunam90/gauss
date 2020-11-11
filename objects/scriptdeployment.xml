@@ -1,7 +1,7 @@
     <scriptdeployment scriptid="customdeploy_{deploy}">
         <allemployees>F</allemployees>
         <allpartners>F</allpartners>
-        <allroles>F</allroles>
+        <allroles>T</allroles>
         <audslctrole></audslctrole>
         <eventtype></eventtype>
         <isdeployed>T</isdeployed>
