@@ -6,7 +6,7 @@
     <notifyowner>T</notifyowner>
     <!-- Ruta al archivo JS para crear el script en NetSuite [/SuiteScripts/path/to/file.js]   -->
     <scriptfile>[{path}]</scriptfile>
-    <scriptdeployemnts>
+    <scriptdeployments>
         {scriptdeployment}
-    </scriptdeployemnts>
+    </scriptdeployments>
 </usereventscript>
