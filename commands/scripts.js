@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const _routes = require('../routes');
+const latestVersion = "2.1";
 
 module.exports = {
     deploy: () => {
@@ -93,12 +94,19 @@ module.exports = {
                     script['id'] = answer.name.replace(/([a-z]{3}_|\.js)/g, '').substr(0, 28);
 
                     let template_script = fs.readFileSync(_routes.template, 'utf8');
+
+                    let createEntryPointsFunctions = script.entry_points.map(function (x) {
+                        return x == '' || x == null || x == ' ' ? '' : ('entry_points.' + x + ' = function (context) { \n   \n }//end ' + x + '\n\n');
+                    }).join('');
+
                     template_script = template_script.replace('{author}', script.author)
                         .replace('{author_email}', script.author_email)
                         .replace('{script_name}', script.name)
                         .replace('{description}', script.description)
                         .replace('{script_type}', script.type)
-                        .replace('{entry_point}', script.entry_points.join(': null,\n\t'));
+                        .replace('{api_version}', script.record == 'client' ? "2.x" : latestVersion)
+                        .replace('{entry_point}', script.entry_points.join(': null,\n\t'))
+                        .replace('{entry_point_functions}', createEntryPointsFunctions);
 
                     fs.writeFile(path.join(_routes.cwd, 'FileCabinet', (apptype == 'SUITEAPP') ? 'SuiteApps' : 'SuiteScripts', config.name, script.name), template_script, 'utf8', (err) => { });
                     if (answer.scriptrecord) {

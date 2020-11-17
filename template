@@ -2,7 +2,7 @@
  * @author {author} <{author_email}>
  * @Name {script_name}
  * @description {description}
- * @NApiVersion 2.x
+ * @NApiVersion {api_version}
  * @NScriptType {script_type}
  */
 
@@ -10,14 +10,11 @@ define([], function(){
     const entry_point = {
         {entry_point}
     };
-
-    return entry_point;
     
-    /* ___________________________________________________________________________________________________________________________________________________________
-    * |                                                                                                                                                           |
-    * |  Below this, create all functions to complement the behavor for the development, remeber you always can create new libraries and import as custom modules |
-    * |___________________________________________________________________________________________________________________________________________________________|
-    */
-
+    /* 
+     * Your code here
+     */
+    {entry_point_functions}
+    return entry_point;
 
 });
