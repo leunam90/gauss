@@ -6,15 +6,16 @@
  * @NScriptType {script_type}
  */
 
-define([], function(){
-    const entry_point = {
-        {entry_point}
-    };
-    
-    /* 
-     * Your code here
-     */
-    {entry_point_functions}
-    return entry_point;
+define([], function () {
+   const entry_point = {
+   {entry_point}
+   };
+
+   /* 
+    * Your code here
+    */
+
+{entry_point_functions}
+   return entry_point;
 
 });
