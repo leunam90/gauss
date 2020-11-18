@@ -21,7 +21,7 @@ module.exports = {
         const config = JSON.parse(fs.readFileSync(path.join(_routes.cwd, 'config.json')));
         const apptype = fs.readFileSync(path.join(_routes.cwd, 'manifest.xml'), 'utf8').match(/(SUITEAPP|ACCOUNTCUSTOMIZATION)/)[0];
         const sdfclicmd = (fs.existsSync(path) && fs.lstatSync(path).isDirectory()) ? 'uploadfolders' : 'uploadfiles';
-        file = file.replace((/(FileCabinet|SuiteApps|SuiteScripts|\\|\/)/g), '').replace(config.name, '');
+        file = file.replace((/FileCabinet(\\|\/)(SuiteApps|SuiteScripts)(\\|\/)/g), '').replace(config.name, '').replace('\\', '/');
 
         if (apptype == 'SUITEAPP') upload_path = `/SuiteApps/${config.name}/${file}`;
         if (apptype == 'ACCOUNTCUSTOMIZATION') upload_path = `/SuiteScripts/${config.name}/${file}`;
