@@ -21,17 +21,10 @@ module.exports = {
         const config = JSON.parse(fs.readFileSync(path.join(_routes.cwd, 'config.json')));
         const apptype = fs.readFileSync(path.join(_routes.cwd, 'manifest.xml'), 'utf8').match(/(SUITEAPP|ACCOUNTCUSTOMIZATION)/)[0];
         const sdfclicmd = (fs.existsSync(path) && fs.lstatSync(path).isDirectory()) ? 'uploadfolders' : 'uploadfiles';
-<<<<<<< HEAD
         file = file.replace((/FileCabinet(\\|\/)(SuiteApps|SuiteScripts)(\\|\/)/g), '').replace(config.name, '').replace(/\\/g, '/');
         
         if (apptype == 'SUITEAPP') upload_path = `/SuiteApps/${config.name}${file}`;
         if (apptype == 'ACCOUNTCUSTOMIZATION') upload_path = `/SuiteScripts/${config.name}${file}`;
-=======
-        file = file.replace((/(FileCabinet|SuiteApps|SuiteScripts|\\|\/)/g), '').replace(config.name, '');
-
-        if (apptype == 'SUITEAPP') upload_path = `/SuiteApps/${config.name}/${file}`;
-        if (apptype == 'ACCOUNTCUSTOMIZATION') upload_path = `/SuiteScripts/${config.name}/${file}`;
->>>>>>> 6867ef1ab9c2f71f6abb000ddcb2d578c8b8dc4c
         console.log(`sdfcli ${sdfclicmd} -authid ${config.authid} -paths ${upload_path} -p ${_routes.cwd}`)
         const cmd = spawn(path.join(_routes.sdfcli, `sdfcli ${sdfclicmd} -authid ${config.authid} -paths ${upload_path} -p ${_routes.cwd}`), { stdio: "inherit", stdin: "inherit", shell: true });
     },
