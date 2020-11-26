@@ -3,7 +3,9 @@
         "name": "ScheduledScript",
         "entry_points": [
             "execute"
-        ]
+        ],
+        "abbreviation": "sc",
+        "latest_version": "2.1"
     },
     "userevent": {
         "name": "UserEventScript",
@@ -11,7 +13,9 @@
             "beforeLoad",
             "beforeSubmit",
             "afterSubmit"
-        ]
+        ],
+        "abbreviation": "ue",
+        "latest_version": "2.1"
     },
     "client": {
         "name": "ClientScript",
@@ -26,7 +30,9 @@
             "validateField",
             "validateInsert",
             "validateLine"
-        ]
+        ],
+        "abbreviation": "cs",
+        "latest_version": "2.0"
     },
     "mapreduce": {
         "name": "MapreduceScript",
@@ -35,7 +41,9 @@
             "map",
             "reduce",
             "summarize"
-        ]
+        ],
+        "abbreviation": "mr",
+        "latest_version": "2.1"
     },
     "restlet": {
         "name": "Restlet",
@@ -44,12 +52,16 @@
             "post",
             "put",
             "delete"
-        ]
+        ],
+        "abbreviation": "rl",
+        "latest_version": "2.1"
     },
     "suitelet": {
         "name": "Suitelet",
         "entry_points": [
             "onRequest"
-        ]
+        ],
+        "abbreviation": "sl",
+        "latest_version": "2.1"
     }
 }

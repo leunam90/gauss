@@ -60,23 +60,34 @@ ${['SERVERSIDESCRIPTING', 'CUSTOMRECORDS', 'CRM'].map(el => `\t\t<feature requir
                                     return true;
                                 }
                             }).then((answers) => {
-                                execp(`git remote add origin ${answers.remote_url}`, (stdout, stderr, error) => {console.log('Se ha agregado el remoto!')});
+                                execp(`git remote add origin ${answers.remote_url}`, (stdout, stderr, error) => { console.log('Se ha agregado el remoto!') });
                             });
                         }).finally(() => {
                             //creates the package.json in main directory project
-                            const config = {
-                                "name": project_dir,
-                                "author": "",
-                                "email": "",
-                                "authid": "",
-                                "role": 55,
-                                "url": "system.netsuite.com",
-                                "version": `${project.projectversion}`,
-                                "env": "testing",
-                                "description": "",
-                            }
-                            fs.writeFile(path.join('.', 'config.json'), JSON.stringify(config, null, 4), 'utf8', (err) => { });
-                            if (project.type === 'ACCOUNTCUSTOMIZATION') fs.mkdirSync(path.join(_routes.cwd, project.name, 'FileCabinet', 'SuiteScripts', project.name));                            
+                            inquirer.prompt({
+                                type: 'input',
+                                name: 'abbreviation_company',
+                                message: "¿Cuál es abreviación de la compañia?",
+                                validate: (value) => {
+                                    if (value.length != 3) return 'Tamaño no válido';
+                                    return true;
+                                }
+                            }).then((answer) => {
+                                const config = {
+                                    "name": project_dir,
+                                    "author": "",
+                                    "email": "",
+                                    "authid": "",
+                                    "role": 55,
+                                    "url": "system.netsuite.com",
+                                    "version": `${project.projectversion}`,
+                                    "env": "testing",
+                                    "description": "",
+                                    "company_abbreviation": answer.abbreviation_company
+                                }
+                                fs.writeFile(path.join('.', 'config.json'), JSON.stringify(config, null, 4), 'utf8', (err) => { });
+                                if (project.type === 'ACCOUNTCUSTOMIZATION') fs.mkdirSync(path.join(_routes.cwd, project.name, 'FileCabinet', 'SuiteScripts', project.name));
+                            });
                         });
                     }
                 } catch (e) {
