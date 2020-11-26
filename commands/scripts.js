@@ -21,10 +21,10 @@ module.exports = {
         const config = JSON.parse(fs.readFileSync(path.join(_routes.cwd, 'config.json')));
         const apptype = fs.readFileSync(path.join(_routes.cwd, 'manifest.xml'), 'utf8').match(/(SUITEAPP|ACCOUNTCUSTOMIZATION)/)[0];
         const sdfclicmd = (fs.existsSync(path) && fs.lstatSync(path).isDirectory()) ? 'uploadfolders' : 'uploadfiles';
-        file = file.replace((/(FileCabinet|SuiteApps|SuiteScripts|\\|\/)/g), '').replace(config.name, '');
+        file = file.replace((/FileCabinet(\\|\/)(SuiteApps|SuiteScripts)(\\|\/)/g), '').replace(config.name, '').replace(/\\/g, '/');
 
-        if (apptype == 'SUITEAPP') upload_path = `/SuiteApps/${config.name}/${file}`;
-        if (apptype == 'ACCOUNTCUSTOMIZATION') upload_path = `/SuiteScripts/${config.name}/${file}`;
+        if (apptype == 'SUITEAPP') upload_path = `/SuiteApps/${config.name}${file}`;
+        if (apptype == 'ACCOUNTCUSTOMIZATION') upload_path = `/SuiteScripts/${config.name}${file}`;
         console.log(`sdfcli ${sdfclicmd} -authid ${config.authid} -paths ${upload_path} -p ${_routes.cwd}`)
         const cmd = spawn(path.join(_routes.sdfcli, `sdfcli ${sdfclicmd} -authid ${config.authid} -paths ${upload_path} -p ${_routes.cwd}`), { stdio: "inherit", stdin: "inherit", shell: true });
     },
@@ -67,7 +67,7 @@ module.exports = {
                         prefix: '👾',
                         message: 'Nombre del script:',
                         validate: (value) => {
-                            // if (!value.match(/^[a-z]{3}_(ue|cs|mr|rl|sl|sc)_([a-z]{1,})\.js$/)) return 'El nombre del archivo no tiene el formato correcto baboso 🙊';
+                            // if (!value.match(/^[a-z]{3}_(lb|ue|cs|mr|rl|sl|sc)_([a-z]{1,})\.js$/)) return 'El nombre del archivo no tiene el formato correcto baboso 🙊';
                             if (!value.match(/([a-z]{1,24})$/)) return 'Caracteres no permitidos o ha excedido el tamaño.';
                             if (!value.match(/^((?!\.[a-z]).)*$/s)) return 'No ingreses una extensión';
                             return true;
