@@ -10,12 +10,12 @@ const { spawn, exec } = require('child_process');
 let execp = util.promisify(exec);
 
 module.exports = {
-    suiteapp: async (project) => {
-        try {
-            let { stdout, stderr } = await execp(path.join(_routes.sdfcli, `sdfcli createproject -type ${project.type} -parentdirectory ${_routes.cwd} -projectname ${project.name} -projectid ${project.projectid} -publisherid ${project.publisherid} -projectversion ${project.projectversion}`));
-            if (stdout.match(/.+ has been created/)) {
-                //when the suiteapp is created then modify the manifest to add default features
-                const manifest = `<manifest projecttype="${project.type}">
+        suiteapp: async(project) => {
+                try {
+                    let { stdout, stderr } = await execp(path.join(_routes.sdfcli, `sdfcli createproject -type ${project.type} -parentdirectory ${_routes.cwd} -projectname ${project.name} -projectid ${project.projectid} -publisherid ${project.publisherid} -projectversion ${project.projectversion}`));
+                    if (stdout.match(/.+ has been created/)) {
+                        //when the suiteapp is created then modify the manifest to add default features
+                        const manifest = `<manifest projecttype="${project.type}">
     <!--<publisherid>${project.publisherid}</publisherid>-->
     <!--<projectid>${project.projectid}</projectid>-->
     <projectname>${project.name}</projectname>

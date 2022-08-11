@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const minimist = require('minimist');
 const inquirer = require('inquirer');
 const _routes = require('./routes');
@@ -24,8 +25,8 @@ if (args['create-project']) {
         const project = {
             name: args['create-project'].toLowerCase(),
             type: 'ACCOUNTCUSTOMIZATION',
-            projectid: `beexp${args['create-project'].toLowerCase()}`,
-            publisherid: 'com.beexponential',
+            projectid: `${args['create-project'].toLowerCase()}`,
+            publisherid: 'com.generic',
             projectversion: '1.0.0'
         }
         create.suiteapp(project)
@@ -40,7 +41,7 @@ if (args['add-account']) {
             const account = require('./commands/account');
             account.issuetoken();
         } else {
-            console.log('El comando debe ejecutarse en un proyecto sdf no seas baboso, hiciste un joses 😑😑😑😑')
+            console.log('El comando debe ejecutarse en un proyecto sdf.')
         }
     }
 }
@@ -53,7 +54,7 @@ if (args['access']) {
             const account = require('./commands/account');
             account.authenticate();
         } else {
-            console.log('El comando debe ejecutarse en un proyecto sdf no seas baboso, hiciste un joses 😑😑😑😑')
+            console.log('El comando debe ejecutarse en un proyecto sdf.')
         }
     }
 }
@@ -66,7 +67,7 @@ if (args['script']) {
             const scripts = require('./commands/scripts');
             scripts.create();
         } else {
-            console.log('El comando debe ejecutarse en un proyecto sdf no seas baboso, hiciste un joses 😑😑😑😑')
+            console.log('El comando debe ejecutarse en un proyecto sdf.')
         }
     }
 }
@@ -79,7 +80,7 @@ if (args['upload']) {
             const scripts = require('./commands/scripts');
             scripts.upload(args['upload']);
         } else {
-            console.log('El comando debe ejecutarse en un proyecto sdf no seas baboso, hiciste un joses 😑😑😑😑')
+            console.log('El comando debe ejecutarse en un proyecto sdf.')
         }
     }
 }
@@ -92,7 +93,7 @@ if (args['deploy']) {
             const scripts = require('./commands/scripts');
             scripts.deploy();
         } else {
-            console.log('El comando debe ejecutarse en un proyecto sdf no seas baboso, hiciste un joses 😑😑😑😑')
+            console.log('El comando debe ejecutarse en un proyecto sdf.')
         }
     }
 }
