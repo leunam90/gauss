@@ -47,7 +47,7 @@ module.exports = {
                 message: "Ya has creado anteriormente tu authid en la cuenta:",
             }).then((answer) => {
                 if (!answer.authid_exist) {
-                    const cmd = spawn(path.join(_routes.sdfcli, `sdfcli issuetoken -account ${answers.accountid} -email ${answers.email} -role ${config.role} -url ${config.url}`), { stdio: "inherit", stdin: "inherit", shell: true });
+                    const cmd = spawn(path.join(_routes.sdfcli, `suitecloud issuetoken -account ${answers.accountid} -email ${answers.email} -role ${config.role} -url ${config.url}`), { stdio: "inherit", stdin: "inherit", shell: true });
                     cmd.on("close", code => {
                         if (code) return;
                         inquirer.prompt([
@@ -88,7 +88,7 @@ module.exports = {
     },
     authenticate: () => {
         const {authid} = JSON.parse(fs.readFileSync(path.join(_routes.cwd, 'config.json')));
-        const cmd = spawn(path.join(_routes.sdfcli, `sdfcli authenticate -authid ${authid}`), { stdio: "inherit", stdin: "inherit", shell: true });
+        const cmd = spawn(path.join(_routes.sdfcli, `suitecloud authenticate -authid ${authid}`), { stdio: "inherit", stdin: "inherit", shell: true });
         cmd.on("close", code => { if (code) return;});
     }
 }

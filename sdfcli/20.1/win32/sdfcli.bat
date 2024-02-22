@@ -1,7 +1,7 @@
 @ECHO off
 
-set supported_java_version=11
-set cli_jar_file_name=cli-2020.1.1.jar
+set supported_java_version=17
+set cli_jar_file_name=cli-2024.1.0.jar
 
 set msg_java_not_installed=Java Runtime Environment is not installed on this machine. Install JRE version %supported_java_version% to run SDF CLI.
 set msg_java_incompatible_version=Your Java version is not compatible with SDF CLI. Install JRE version %supported_java_version%.
